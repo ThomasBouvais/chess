@@ -12,8 +12,10 @@ QVector<QPoint> Pawn::getAvailableMoves(const QVector<QVector<std::shared_ptr<Ch
         moves.append(QPoint(col, row + direction));
 
         // Check if it's the pawn's first move and the square two steps ahead is also empty
-        if ((row == 6 && direction == -1) || (row == 1 && direction == 1) && !board[row + 2 * direction][col] && !board[row + direction][col]) {
-            moves.append(QPoint(col, row + 2 * direction));
+        if ((row == 6 && direction == -1) || (row == 1 && direction == 1)) {
+            if (!board[row + 2 * direction][col] && !board[row + direction][col]) {
+                moves.append(QPoint(col, row + 2 * direction));
+            }
         }
     }
 
